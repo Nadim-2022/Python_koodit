@@ -4,7 +4,10 @@
 sequenceDiagram
     participant browser
     participant server
-    participant database
+    
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server-->>data.jason: Save new note
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
@@ -28,16 +31,6 @@ sequenceDiagram
     server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
     deactivate server
 
-    Note right of browser: The browser executes the callback function that renders the notes
-
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    activate server
-    server-->>database: Save new note
-    activate database
-    database-->>server: Note saved
-    deactivate database
-    server-->>browser: New note saved successfully
-    deactivate server
 
 ```
 ````
@@ -47,7 +40,10 @@ sequenceDiagram
 sequenceDiagram
     participant browser
     participant server
-    participant database
+    
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server-->>data.jason: Save new note
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
@@ -70,16 +66,4 @@ sequenceDiagram
     activate server
     server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
     deactivate server
-
-    Note right of browser: The browser executes the callback function that renders the notes
-
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    activate server
-    server-->>database: Save new note
-    activate database
-    database-->>server: Note saved
-    deactivate database
-    server-->>browser: New note saved successfully
-    deactivate server
-
 ```
